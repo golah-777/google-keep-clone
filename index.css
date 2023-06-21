@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;500;600&family=Open+Sans:wght@300;400;500;600;700;800&family=Overpass&family=Roboto:wght@300;400;500;700&display=swap');
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+/*navbar styles*/
+
+nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border: 0px;
+  border-bottom: #f0f1f3;
+  border-bottom-width: 1px;
+  border-style: solid;
+  height: 63px;
+}
+
+.icons svg{
+  fill: #757575;
+}
+
+h2{
+  font-size: 22px;
+  font-weight: 400;
+  color:  #757575;
+ padding-left: 4px;
+}
+
+.gb_Pc{
+  padding-right: 4px;
+  margin-left: 15px;
+}
+
+.logo-area{
+  display: flex;
+  align-items: center;
+  margin-right: 80px;
+}
+
+.search-area{
+  width: 720px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 48px;
+  background-color: #f1f3f4;
+  border-radius: 8px;
+  margin-right: 100px;
+  padding: 5px;
+}
+
+.search-area input{
+  width: calc(720px - 47px);
+  padding-bottom: 2px;
+  border: 0px;
+  background-color: #f1f3f4;
+  margin-left: 5px;
+  font-size: 18px;
+}
+
+.search-area div{
+ margin: 5px;
+}
+
+.search-area input:focus{
+  outline:none;
+}
+
+.icons{
+ position:relative;
+ display: inline-block;
+ height: 40px;
+ width: 40;
+ padding: 8px;
+ cursor: pointer;
+}
+
+.icons:hover {
+  background-color: #e5e5e5;
+  background-size: 47px;
+  background-image:  #f1f3f4;
+  border-radius: 50%;
+}
+
+.tooltip{
+  visibility: hidden;
+  bottom: -30px;
+  left: -11px;
+  white-space: nowrap;
+  background-color: rgb(23, 22, 22);
+  font-size: 0.8rem;
+  color: white;
+  opacity: 0.7;
+  padding: 4.5px 7.5px;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 1;
+}
+/* fix the tooltip*/
+.icons:hover .tooltip{
+ visibility: visible;
+}
+
+/*mainbody styles and sidebar styles*/
+
+main{
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar{
+  display: flex;
+  flex-direction: column;
+  margin: 11px 0px;
+}
+
+.sidebar-items{
+  margin: 5px 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 280px;
+  cursor: pointer;
+}
+
+.active{
+  background-color: #feefc3;
+  background-size: 47px;
+  background-image:  #f1f3f4;
+  border-radius: 50%; 
+}
+
+.active svg{
+  fill: black;
+}
+
+.active:hover{
+  background-color: #feefc3;
+  background-size: 47px;
+  background-image:  #f1f3f4;
+  border-radius: 50%;
+}
+
+.active svg:hover{
+  fill: black;
+}
+
+.sidebar-text{
+ margin-left: 25px;
+ color: #202124;
+ font-size: .875rem;
+ font-weight: 500;
+ /* display: none; */
+}
+
+section{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+
+form{
+  background-color: white;
+  padding-left: 2p;
+  max-width: 598px;
+  /* height: 47px; */
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 2px 6px 2px rgba(60,64,67,0.149);
+  position: relative;
+  top: 34px;
+  left: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.form-icons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 4px;
+  height: 44px;
+}
+
+.form-icons input, .notetitle-pin input{
+  color: black;
+  font-size:16px;
+  width:calc(598px - 120px);
+  border:0px;
+  height:100%;
+  margin-left:20px;
+}
+
+.form-icons input:focus{
+  outline: none;
+}
+
+.notetitle-pin input:focus{
+  outline: none;
+}
+
+.form-icons .icons{
+  margin: 0px 7px;
+}
+
+.notetitle-pin{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+  /* display: none; */
+  /*NB*/
+}
+
+.notetitle-pin .icons {
+  margin-left: 50px;
+}
+
+.footer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /* display: none; */
+  /*NB*/
+}
+
+.clear-btn{
+  padding: 8px 24px;
+  margin-right: 15px;
+  background-color: white;
+  border: 0;
+  font-size: 14px;
+  color: #212121;
+  cursor: pointer;
+}
+
+.clear-btn:hover{
+  background-color: rgba(0,0,0,.05);
+  border-radius: 4px;
+}
+
+.footer-icons{
+  margin-left: 12px;
+  padding: 5px 0px;
+  display: flex;
+  flex-direction: row;
+}
+
+.footer-icons .icons svg{
+ width: 17px;
+ position: absolute;
+ left: 8px;
+ top: 4px;
+ fill: #555555;
+}
+
+.footer-icons .icons{
+  padding: 0px;
+  width: 34px;
+  height: 34px;
+  position: relative;
+  margin-right: 10px;
+}
+
+
+.footer-icons .icons:hover{
+  border-radius: 55%;
+}
+
+/*note section styles*/
+
+.note{
+  display: flex;
+  flex-direction: column;
+  width: 239px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  display: inline-block;
+  transition: box-shadow 0.4s;
+  top: 60px;
+  position: relative;
+  margin: 7px;
+}
+
+.note:hover{
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 2px 6px 2px rgba(60,64,67,0.149);
+}
+
+.title-note{
+  padding: 12px 16px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title-note .icons{
+  margin-right: -10px;
+}
+
+.text-note{
+  padding: 4px 16px 12px;
+}
+
+.footer-note{
+  padding-bottom: 3px;
+}
+
+.footer-note .icons, .title-note .icons{
+  width: 33px;
+  height: 33px;
+  margin-left: 3px;
+}
+
+.footer-note .icons svg, .title-note .icons svg{
+  width: 17px;
+  height: 17px;
+  fill: black;
+}
+
+.footer-note .icons .tooltip{
+  bottom: -22px;
+}
+
+.title-note .icons .tooltip{
+  bottom: -20px;
+}
+
+
+.check-note{
+  display: none;
+  display: inline-block;
+  position: absolute;
+  left: -0.55rem;
+  top: -0.55rem;
+  visibility: hidden;
+}
+
+.check-note svg{
+ fill: black;
+}
+
+.check-note{
+  transition:visibility 0.4s;
+}
+
+.note:hover .check-note{
+  visibility: visible;
+  transition-delay: 0.15s;
+}
+
+.modal{
+ position: absolute;
+ top: 0;
+ width: 100%;
+ height: 100%;
+ background-color: rgba(0,0,0,0.5);
+ /* display: none; */
+}
+
+.modal-content, .modal-content form{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.modal-content form{
+  width: 599px;
+}
