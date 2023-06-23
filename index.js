@@ -8,7 +8,22 @@ class Note {
 
 class App{
   constructor(){
-    this.notes = []
+    this.notes = [];
+    this.$activateForm = document.querySelector(".active-form")
+    this.$notetitlepin = document.querySelector(".notetitle-pin");
+    this.$footer = document.querySelector(".footer")
+
+    this.addEventListeners();
+  }
+
+  addEventListeners(){
+    document.body.addEventListener("click", (event)=>{
+      this.handleFormClick(event);
+    })
+  }
+
+  handleFormClick(event){
+    
   }
 
 
@@ -41,30 +56,4 @@ class App{
   }
 }
 
-const note1 = {
-  title:"Test note",
-  text:"text",
-}
-
-const updatedNote = {
-  title:"updated test note",
-  text:"updated text"
-}
 const app = new App();
-app.addNote(0,note1);
-app.addNote(1,note1);
-app.addNote(2,note1);
-app.addNote(3,note1);
-app.displayNotes();
-
-setTimeout(()=>{
-  app.editNote(2, updatedNote);
-  app.displayNotes();
-}, 2000)
-
-setTimeout(()=>{
-  app.deleteNote(2)
-  app.displayNotes();
-}, 3000)
-
-app.displayNotes();
