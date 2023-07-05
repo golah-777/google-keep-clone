@@ -186,7 +186,7 @@ form{
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-top: 4px;
+  /* padding-top: 4px; */
   height: 44px;
 }
 
@@ -222,6 +222,12 @@ form{
 
 .notetitle-pin .icons {
   margin-left: 50px;
+}
+
+.form-icons-sec{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .footer{
