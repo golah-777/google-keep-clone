@@ -14,7 +14,7 @@ class App{
     this.$footer = document.querySelector(".footer");
     this.$btndiv = document.querySelector(".btn-div ");
     this.$formiconssec = document.querySelector(".form-icons-sec");
-    this.$clearBtn =  document.querySelector(".clear-btn");
+    this.$clearBtn =  document.querySelector(".btn-div");
     this.$noteTitle = document.querySelector(".note-title");
     this.noteText = document.querySelector(".note-content");
 
@@ -32,16 +32,18 @@ class App{
    const clearbtnFormClicked =  this.$clearBtn.contains(event.target);
    const noteTitlePin = this.$notetitlepin.contains(event.target) ;
    const footerform = this.$footer.contains(event.target);
-   const title =  this.$noteTitle.value;
+   const title = this.$noteTitle.value;
    const text = this.noteText.value;
+   console.log(title)
+   console.log(text)
    console.log(cuid())
     
    if(activateFormClicked){
     this.openForm();
 
-   } else if((!activateFormClicked && !noteTitlePin && !footerform) || clearbtnFormClicked){
+   } else if((!activateFormClicked && !noteTitlePin && !footerform) ||  clearbtnFormClicked){
     this.closeForm();
-    this.addNote({title, text})
+    this.addNote({title, text});
    }
   }
 
