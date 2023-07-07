@@ -347,21 +347,21 @@ form{
   position: absolute;
   left: -0.55rem;
   top: -0.55rem;
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 
 .check-note svg{
  fill: black;
 }
 
-.check-note{
+/* .check-note{
   transition:visibility 0.4s;
 }
 
 .note:hover .check-note{
   visibility: visible;
   transition-delay: 0.15s;
-}
+} */
 
 .modal{
  position: absolute;
