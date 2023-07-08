@@ -318,6 +318,8 @@ form{
 
 .footer-note{
   padding-bottom: 3px;
+  visibility: hidden;
+  transition: visibility 0.1s;
 }
 
 .footer-note .icons, .title-note .icons{
@@ -347,7 +349,8 @@ form{
   position: absolute;
   left: -0.55rem;
   top: -0.55rem;
-  /* visibility: hidden; */
+  visibility: hidden;
+  transition: visibility 0.1s;
 }
 
 .check-note svg{
@@ -381,4 +384,16 @@ form{
 
 .modal-content form{
   width: 599px;
+}
+
+.modal-content .notetitle-pin, .modal-content .footer{
+  display: inline;
+}
+
+.modal-content button{
+  display: inline;
+}
+
+.modal-content .footer{
+  display: flex;
 }

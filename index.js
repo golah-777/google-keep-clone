@@ -21,6 +21,8 @@ class App{
     this.$noteText = document.querySelector(".active-form");
     this.$notes = document.querySelector(".notes");
     this.$formActive = document.querySelector("#form-active");
+    this.$modal = document.querySelector(".modal");
+    this.$modalForm = document.querySelector(".modal-form");
    
     this.addEventListeners();
   }
@@ -28,9 +30,14 @@ class App{
   addEventListeners(){
     document.body.addEventListener("click", (event)=>{
       this.handleFormClick(event);
+      this.openModal(event);
     })
 
     this.$formActive.addEventListener("submit", (event) =>{
+      event.preventDefault();
+    })
+
+    this.$modalForm.addEventListener("submit",(event)=>{
       event.preventDefault();
     })
   }
@@ -42,7 +49,7 @@ class App{
    const footerform = this.$footer.contains(event.target);
    const title = this.$noteTitle.value;
    const text = this.$noteText.value;
-   console.log(cuid())
+  //  console.log(cuid())
     
    if(activateFormClicked){
     this.openForm();
@@ -93,10 +100,44 @@ class App{
   deleteNote(id){
    this.notes = this.notes.filter(note =>note.id !=id)
   }
+
  
+ 
+  handleMouseOver(element){
+    this.$notes  = document.querySelector("#"+element.id)
+    const checkNoteDiv = this.$notes.querySelector('.check-note');
+    const footerNoteDiv = this.$notes.querySelector('.footer-note');
+    
+   checkNoteDiv.style.visibility = 'visible';
+   footerNoteDiv.style.visibility = 'visible';
+  }
+
+  handleMouseOut(element){
+    this.$notes = document.querySelector("#"+element.id)
+    const $checkNoteDiv = this.$notes.querySelector('.check-note');
+    const $footerNoteDiv = this.$notes.querySelector('.footer-note');
+    
+   $checkNoteDiv.style.visibility = 'hidden';
+   $footerNoteDiv.style.visibility = 'hidden';
+  }
+
+  openModal(event){
+
+    const modalFormClicked = this.$modalForm.contains(event.target);
+
+
+    if(event.target.closest(".note")){
+      this.$modal.style.display = 'inline'
+    } else if (!modalFormClicked){
+      this.$modal.style.display = 'none'
+    }
+  }
+
+
+
   displayNotes(){
     this.$notes.innerHTML = this.notes.map(note =>`
-     <div class="note" id="${note.id}">
+    <div class="note" id="${note.id}" onmouseover="app.handleMouseOver(this)" onmouseout="app.handleMouseOut(this)">
         <div class="check-note">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
         </div>
@@ -136,9 +177,11 @@ class App{
             <div class="tooltip">More</div>
           </div>
         </div>
-     </div>
+    </div>
     `).join(' ')
+
   }
+
 }
 
 const app = new App();
