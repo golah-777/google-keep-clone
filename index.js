@@ -129,10 +129,13 @@ class App{
     const $selectedNote = event.target.closest(".note");
     const $modalTitleValue = this.$notes.querySelector("#title");
     const $modalTextValue = this.$notes.querySelector("#text");
+    // const $modalTitleValue = $selectedNote.querySelector(".title-note span"); 
+    // const $modalTextValue = $selectedNote.querySelector(".text-note span");
     const note = this.$notes.querySelector('.note')
  
     if($selectedNote){
       this.$modal.style.display = 'inline';
+      //problem!!!!
       this.$modalTitle.value =  $modalTitleValue.textContent;
       this.$modalNote.value = $modalTextValue.textContent;
       
