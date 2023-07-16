@@ -58,7 +58,6 @@ class App{
     
    if(activateFormClicked){
     this.openForm();
-
    } else if((!activateFormClicked && !noteTitlePin && !footerform) ||  clearbtnFormClicked){
     this.closeForm();
     this.addNote({title, text});
@@ -85,7 +84,7 @@ class App{
 
   addNote({title,text}) {
    if(text != "" || title !=""){
-    const newNote = new Note(cuid(), title, text);
+    const newNote = new Note(cuid(),title, text);
     this.notes = [...this.notes, newNote ];
     this.displayNotes();
    }
@@ -112,7 +111,8 @@ class App{
  
  
   handleMouseOver(element){
-    this.$notes  = document.querySelector("#"+element.id)
+    // this.$notes  = document.querySelector("#"+element.id);
+    this.$notes.querySelector("#"+element.id);
     const checkNoteDiv = this.$notes.querySelector('.check-note');
     const footerNoteDiv = this.$notes.querySelector('.footer-note');
     
@@ -121,7 +121,8 @@ class App{
   }
 
   handleMouseOut(element){
-    this.$notes = document.querySelector("#"+element.id)
+    // this.$notes = document.querySelector("#"+element.id);
+    this.$notes.querySelector("#"+element.id);
     const $checkNoteDiv = this.$notes.querySelector('.check-note');
     const $footerNoteDiv = this.$notes.querySelector('.footer-note');
     
@@ -140,17 +141,14 @@ class App{
     const clearbtnFormClicked =  this.$clearBtn.contains(event.target);
  
     if($selectedNote && !event.target.closest(".archive")){
-      this.selectedNoteId =$selectedNote.id;
+      this.selectedNoteId = $selectedNote.id;
       this.$modal.style.display = 'inline';
       //problem!!!!
       this.$modalTitle.value =  $modalTitleValue.textContent;
       this.$modalNote.value = $modalTextValue.textContent;
-      
     } else if (!modalFormClicked){
       this.$modal.style.display = 'none';
       this.editNote(this.selectedNoteId, {title: this.$modalTitle.value, text:this.$modalNote.value});
-    } else if ( clearbtnFormClicked ){
-     console.log('hi')
     }
   }
 
@@ -209,7 +207,10 @@ class App{
     `).join(' ')
 
   }
+   
+ 
 
+  
 }
 
 const app = new App();
