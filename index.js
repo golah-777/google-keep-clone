@@ -112,36 +112,39 @@ class App{
  
   handleMouseOver(element){
     // this.$notes  = document.querySelector("#"+element.id);
-    this.$notes.querySelector("#"+element.id);
-    const checkNoteDiv = this.$notes.querySelector('.check-note');
-    const footerNoteDiv = this.$notes.querySelector('.footer-note');
-    
-   checkNoteDiv.style.visibility = 'visible';
-   footerNoteDiv.style.visibility = 'visible';
+    let note =  document.querySelector("#"+element.id);
+    // const checkNoteDiv = this.$notes.querySelector('.check-note');
+    const checkNoteDiv = note.querySelector('.check-note');
+    // const footerNoteDiv = this.$notes.querySelector('.footer-note');
+    const footerNoteDiv = note.querySelector('.footer-note');
+    checkNoteDiv.style.visibility = 'visible';
+    footerNoteDiv.style.visibility = 'visible';
   }
 
   handleMouseOut(element){
     // this.$notes = document.querySelector("#"+element.id);
-    this.$notes.querySelector("#"+element.id);
-    const $checkNoteDiv = this.$notes.querySelector('.check-note');
-    const $footerNoteDiv = this.$notes.querySelector('.footer-note');
-    
-   $checkNoteDiv.style.visibility = 'hidden';
-   $footerNoteDiv.style.visibility = 'hidden';
+    let note =  document.querySelector("#"+element.id);
+    // const $checkNoteDiv = this.$notes.querySelector('.check-note');
+    const $checkNoteDiv = note.querySelector('.check-note');
+    // const $footerNoteDiv = this.$notes.querySelector('.footer-note');
+    const $footerNoteDiv = note.querySelector('.footer-note');
+    $checkNoteDiv.style.visibility = 'hidden';
+    $footerNoteDiv.style.visibility = 'hidden';
   }
 
   openModal(event){
+    let note =  document.querySelector("#"+element.id);
     const modalFormClicked = this.$modalForm.contains(event.target);
     const $selectedNote = event.target.closest(".note");
     const $modalTitleValue = this.$notes.querySelector("#title");
     const $modalTextValue = this.$notes.querySelector("#text");
     // const $modalTitleValue = $selectedNote.querySelector(".title-note span"); 
     // const $modalTextValue = $selectedNote.querySelector(".text-note span");
-    const note = this.$notes.querySelector('.note');
+    // const note = this.$notes.querySelector('.note');
     const clearbtnFormClicked =  this.$clearBtn.contains(event.target);
  
     if($selectedNote && !event.target.closest(".archive")){
-      this.selectedNoteId = $selectedNote.id;
+      // this.selectedNoteId = $selectedNote.id;
       this.$modal.style.display = 'inline';
       //problem!!!!
       this.$modalTitle.value =  $modalTitleValue.textContent;
