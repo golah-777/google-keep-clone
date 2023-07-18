@@ -8,8 +8,10 @@ class Note {
 
 class App{
   constructor(){
+    this.notes = JSON.parse(localStorage.getItem('notes') || []); 
     this.notes = [];
     this.selectedNoteId = "";
+    this.miniSidebar = true;
 
     this.$activateForm = document.querySelector(".active-form");
     this.$notetitlepin = document.querySelector(".notetitle-pin");
@@ -27,6 +29,8 @@ class App{
     this.$modalTitle = document.querySelector(".modal-title");
     this.$modalNote = document.querySelector(".modal-note");
     this.$modalBtnClose = document.querySelector(".clear-btn");
+    this.$sidebar = document.querySelector(".sidebar");
+    this.$sidebarActive = document.querySelector(".active-item");
    
     this.addEventListeners();
   }
@@ -45,6 +49,28 @@ class App{
     this.$modalForm.addEventListener("submit",(event)=>{
       event.preventDefault();
     })
+
+    this.$sidebar.addEventListener("mouseover", (event)=>{
+      this.handleToggleSidebar()
+    })
+
+    this.$sidebar.addEventListener("mouseout", (event)=>{
+      this.handleToggleSidebar()
+    })
+  }
+
+  handleToggleSidebar(){
+   if(this.miniSidebar){
+    this.$sidebar.style.width = "280px";
+    this.miniSidebar = false;
+    this.$sidebar.classList.add("sidebar-hover");
+    this.$sidebarActive.classList.add("sidebar-active-items");
+   }else{
+    this.$sidebar.style.width = "80px";
+    this.miniSidebar = true;
+    this.$sidebar.classList.remove("sidebar-hover");
+    this.$sidebarActive.classList.remove("sidebar-active-items");
+   }
   }
 
   handleFormClick(event){
@@ -86,7 +112,7 @@ class App{
    if(text != "" || title !=""){
     const newNote = new Note(cuid(),title, text);
     this.notes = [...this.notes, newNote ];
-    this.displayNotes();
+    this.render();
    }
   }
 
@@ -100,12 +126,12 @@ class App{
       return note;
     });
 
-    this.displayNotes();
+    this.render();
   }
   
   deleteNote(id){
    this.notes = this.notes.filter(note =>note.id !=id);
-   this.displayNotes();
+   this.render();
   }
 
  
@@ -162,6 +188,15 @@ class App{
       this.selectedNoteId =$selectedNote.id;
       this.deleteNote(this.selectedNoteId);
     } 
+  }
+
+  saveNotes(){
+    localStorage.setItem('notes',JSON.stringify(this.notes));
+  }
+
+  render(){
+    this.saveNotes();
+    this.displayNotes();
   }
 
   displayNotes(){
