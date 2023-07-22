@@ -19,6 +19,8 @@ nav{
   border-bottom-width: 1px;
   border-style: solid;
   height: 63px;
+  position: fixed;
+  width: 100%;
 }
 
 .icons svg{
@@ -117,12 +119,13 @@ main{
 .sidebar{
   display: flex;
   flex-direction: column;
-  margin: 11px 0px;
+  margin: 63px 0px;
   width: 80px;
   height: 100%;
   position: fixed;
   overflow-x: hidden;
   transition: 0.3s;
+  /* z-index: -1; */
 }
 
 .sidebar-hover{
@@ -157,6 +160,7 @@ main{
   background-size: 47px;
   background-image:  #f1f3f4;
   border-radius: 50%; 
+  /* z-index: -1; */
 }
 
 .active svg{
@@ -197,6 +201,7 @@ section{
   display: flex;
   flex-direction: column;
   margin-left: 210px;
+  margin-top: 50px;
   /* justify-content: space-between; */
 }
 

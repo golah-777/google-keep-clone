@@ -8,7 +8,7 @@ class Note {
 
 class App{
   constructor(){
-    this.notes = JSON.parse(localStorage.getItem('notes') || []); 
+    this.notes = JSON.parse(localStorage.getItem('notes')) || []; 
     this.notes = [];
     this.selectedNoteId = "";
     this.miniSidebar = true;
@@ -113,6 +113,7 @@ class App{
     const newNote = new Note(cuid(),title, text);
     this.notes = [...this.notes, newNote ];
     this.render();
+    this.saveNotes();
    }
   }
 
@@ -127,11 +128,13 @@ class App{
     });
 
     this.render();
+    this.saveNotes();
   }
   
   deleteNote(id){
    this.notes = this.notes.filter(note =>note.id !=id);
    this.render();
+   this.saveNotes();
   }
 
  
@@ -159,25 +162,21 @@ class App{
   }
 
   openModal(event){
-    let note =  document.querySelector("#"+element.id);
-    const modalFormClicked = this.$modalForm.contains(event.target);
     const $selectedNote = event.target.closest(".note");
-    const $modalTitleValue = this.$notes.querySelector("#title");
-    const $modalTextValue = this.$notes.querySelector("#text");
-    // const $modalTitleValue = $selectedNote.querySelector(".title-note span"); 
-    // const $modalTextValue = $selectedNote.querySelector(".text-note span");
-    // const note = this.$notes.querySelector('.note');
-    const clearbtnFormClicked =  this.$clearBtn.contains(event.target);
- 
-    if($selectedNote && !event.target.closest(".archive")){
-      // this.selectedNoteId = $selectedNote.id;
-      this.$modal.style.display = 'inline';
-      //problem!!!!
-      this.$modalTitle.value =  $modalTitleValue.textContent;
-      this.$modalNote.value = $modalTextValue.textContent;
-    } else if (!modalFormClicked){
-      this.$modal.style.display = 'none';
+    const  ismodalClicked = this.$modal.contains(event.target);
+    const modalFormClicked = this.$modalForm.contains(event.target);
+    if($selectedNote &&!event.target.closest(".archive")){
+      this.selectedNoteId = $selectedNote.id;
+      this.$modalTitle.value=  $selectedNote.children[1].innerText;
+      this.$modalNote.value= $selectedNote.children[2].innerText; 
+      this.$modal.style.display = 'inline'
+    }else if(!modalFormClicked){
       this.editNote(this.selectedNoteId, {title: this.$modalTitle.value, text:this.$modalNote.value});
+      this.$modal.style.display = 'none';
+    }
+    
+    else{
+      return;
     }
   }
 
