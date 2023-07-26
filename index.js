@@ -9,7 +9,6 @@ class Note {
 class App{
   constructor(){
     this.notes = JSON.parse(localStorage.getItem('notes')) || []; 
-    this.notes = [];
     this.selectedNoteId = "";
     this.miniSidebar = true;
 
@@ -113,7 +112,6 @@ class App{
     const newNote = new Note(cuid(),title, text);
     this.notes = [...this.notes, newNote ];
     this.render();
-    this.saveNotes();
    }
   }
 
@@ -128,13 +126,11 @@ class App{
     });
 
     this.render();
-    this.saveNotes();
   }
   
   deleteNote(id){
    this.notes = this.notes.filter(note =>note.id !=id);
    this.render();
-   this.saveNotes();
   }
 
  
@@ -169,7 +165,7 @@ class App{
       this.selectedNoteId = $selectedNote.id;
       this.$modalTitle.value=  $selectedNote.children[1].innerText;
       this.$modalNote.value= $selectedNote.children[2].innerText; 
-      this.$modal.style.display = 'inline'
+      this.$modal.style.display = 'inline';
     }else if(!modalFormClicked){
       this.editNote(this.selectedNoteId, {title: this.$modalTitle.value, text:this.$modalNote.value});
       this.$modal.style.display = 'none';
